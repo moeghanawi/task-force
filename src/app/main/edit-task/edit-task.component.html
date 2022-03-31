@@ -1,0 +1,36 @@
+<h3 mat-dialog-title>Edit Task</h3>
+<div *ngIf="dataLoaded">
+  <form [formGroup]="editTask">
+    <mat-dialog-content>
+      <div fxLayout="column">
+        <mat-form-field style="width: 30vw">
+          <textarea
+            cols="13"
+            rows="3"
+            matInput
+            placeholder="edit task"
+            formControlName="task"
+          ></textarea>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="completed">Is Completed?</mat-checkbox>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button
+        [disabled]="editTask.pristine && !editTask.valid"
+        class="btn"
+        color="primary"
+        mat-raised-button
+        (click)="updateTask()"
+      >
+        Save
+      </button>
+
+      <button class="btn" color="accent" mat-raised-button (click)="close()">
+        Close
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

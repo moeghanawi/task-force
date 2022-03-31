@@ -1,0 +1,10 @@
+<mat-toolbar color="accent">
+  <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%">
+    <div>
+      <mat-card-title class="title" > Task Force App </mat-card-title>
+    </div>
+    <div *ngIf="isLoggedIn">
+      <button class="logOut" mat-button (click)="logOut()">Log Out</button>
+    </div>
+  </div>
+</mat-toolbar>

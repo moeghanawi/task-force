@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>Confirmation</h3>
+
+<mat-dialog-content>
+  <p>{{ popUpData.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    class="btn"
+    [color]="popUpData.buttonColor || 'primary'"
+    mat-raised-button
+    (click)="confirm()"
+  >
+    {{ popUpData.buttonName || "Confirm" }}
+  </button>
+
+  <button class="btn" color="accent" mat-raised-button (click)="close()">
+    Close
+  </button>
+</mat-dialog-actions>

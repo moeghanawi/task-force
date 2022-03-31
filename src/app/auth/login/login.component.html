@@ -1,0 +1,101 @@
+<div class="mt-3" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="login-form" color="accent">
+    <form [formGroup]="loginForm">
+      <mat-card-title class="center-login">Login</mat-card-title>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>email</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+        <div>
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.get('email')?.hasError('required') &&
+              loginForm.get('email')?.touched
+            "
+          >
+            Please email must be Provided
+          </span>
+        </div>
+        <div>
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.get('email')?.hasError('minlength') &&
+              loginForm.get('email')?.touched
+            "
+          >
+            Please email must be more than 3 characters
+          </span>
+        </div>
+        <div class="input">
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.get('email')?.hasError('maxlength') &&
+              loginForm.get('email')?.touched
+            "
+          >
+            email must be no more than 10 characters
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>password </mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+        <div class="input">
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.get('password')?.hasError('required') &&
+              loginForm.get('password')?.touched
+            "
+          >
+            Please password must be provided
+          </span>
+        </div>
+
+        <div class="input">
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.get('password')?.hasError('minlength') &&
+              loginForm.get('password')?.touched
+            "
+          >
+            Password must be more than 3 characters
+          </span>
+        </div>
+        <div class="input">
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.get('password')?.hasError('maxlength') &&
+              loginForm.get('password')?.touched
+            "
+          >
+            Password must be no more than 10 characters
+          </span>
+        </div>
+      </div>
+      <div>
+        <button
+          [disabled]="!loginForm.valid"
+          mat-raised-button
+          color="primary"
+          class="btn"
+          (click)="logIn()"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+    <div class="center-login">
+      <a [routerLink]="['/register']">Create new account</a>
+    </div>
+  </mat-card>
+</div>

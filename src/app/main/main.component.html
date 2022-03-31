@@ -1,0 +1,57 @@
+<div>
+  <mat-card class="main">
+    <form [formGroup]="newTaskForm" (submit)="createTask()">
+      <p class="date">{{ this.date | date: "short" }}</p>
+
+      <mat-form-field class="task-insert" appearance="outline">
+        <mat-label>Insert New Task</mat-label>
+
+        <input
+          matInput
+          placeholder="enter task"
+          formControlName="task"
+          required
+        />
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+
+      <br />
+
+      <button class="btn" mat-raised-button color="primary">
+        Create New Task
+      </button>
+    </form>
+
+    <div>
+      <mat-card class="mat-list" *ngFor="let task of tasks">
+        <mat-card-content>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <p class="task-name">{{ task.task | uppercase }}</p>
+            </div>
+            <div fxLayout="row">
+              <button
+                (click)="openDialog(task)"
+                mat-mini-fab
+                color="primary"
+                aria-label="Example icon button
+                with a menu icon"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <div style="align-self: center">&nbsp;|&nbsp;</div>
+              <button
+                (click)="deleteTask(task._id)"
+                mat-mini-fab
+                color="primary"
+                aria-label="Example icon button with a delete icon"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

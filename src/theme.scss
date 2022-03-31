@@ -1,0 +1,38 @@
+// define 3 theme color
+// mat-palette accepts $palette-name, main, lighter and darker variants
+
+@import "~@angular/material/theming";
+
+$mat-primary: (
+  main: #303f9f,
+  lighter: #666ad1,
+  darker: #001970,
+  200: #9fa8da,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+$mat-accent: (
+  main: #00b8d4,
+  lighter: #62ebff,
+  darker: #0088a3,
+  200: #18ffff,
+  // For slide toggle,
+  contrast:
+    (
+      main: $light-primary-text,
+      lighter: $dark-primary-text,
+      darker: $light-primary-text,
+    ),
+);
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
+$theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+$theme-warn: mat-palette($mat-deep-orange, A200);
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$my-theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
